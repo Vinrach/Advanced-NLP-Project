@@ -1,22 +1,100 @@
-# Distributed Representation of Words and Phrases and their Compositionality.
+<div align="center">
 
-# Abstract
-In the paper “Distributed Representations of Words and Phrases and Their Compositionality,” the 
-researchers offer an improved skip-gram model for learning word vectors, which greatly advances the 
-quality and speed of word representations. Key milestones consist of subsampling for frequent words 
-to boost training as well as representation of infrequent words; it also introduces negative sampling as 
-an alternative to hierarchical softmax. These techniques not only make training more efficient but also 
-help the model capture better syntactic and semantic relations between words. Besides, another issue 
-that is addressed in the paper is representing phrases and idiomatic expressions used in detecting such 
-phrases and forming vector representations.
+# Neural Word Embeddings with Skip-Gram & Negative Sampling
 
-# Objective
-Enhance Word Vector Quality: Improve the representation of words, particularly rare terms, by focusing on less common words during training.
+### Learning Semantic Word Representations from Context
 
-Accelerate Training Process: Incorporate frequent word subsampling and negative sampling to reduce training time while maintaining accuracy.
+<p>
+  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/PyTorch-Deep%20Learning-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white">
+  <img src="https://img.shields.io/badge/NLTK-NLP-154F5C?style=for-the-badge">
+  <img src="https://img.shields.io/badge/NumPy-Numerical%20Computing-013243?style=for-the-badge&logo=numpy&logoColor=white">
+  <img src="https://img.shields.io/badge/scikit--learn-Evaluation-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white">
+  <img src="https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white">
+</p>
 
-Effective Phrase Representation: Develop a method to represent phrases as unique tokens to better understand multi-word expressions and idiomatic phrases.
+</div>
 
-Address Limitations of Initial Representations: Improve the model's ability to capture complex language structures, enabling more accurate vector representations for phrases.
+---
 
-Contribute to Natural Language Processing (NLP): Enhance the effectiveness and capacity of the Skip-gram model to capture a broader range of linguistic complexities.
+## Overview
+
+This project implements a **Skip-Gram neural word embedding model** inspired by
+the work of Mikolov et al. on distributed representations of words and phrases.
+
+The model learns dense vector representations of words by using surrounding
+context to predict target-context relationships.
+
+The implementation explores:
+
+- Skip-Gram architecture
+- Negative sampling
+- Frequent-word subsampling
+- Context-window based training
+- Dense word embeddings
+- Cosine similarity
+- Word analogy reasoning
+- Vector compositionality
+- Embedding visualization using PCA and t-SNE
+
+The project was developed as part of a Master's-level Advanced NLP project.
+
+---
+
+## Project Goals
+
+The primary objective is to understand and implement how neural language models
+learn meaningful representations of words from their surrounding context.
+
+The project focuses on four major questions:
+
+1. **How can words be represented as dense numerical vectors?**
+2. **How can contextual information be used to learn semantic relationships?**
+3. **Can negative sampling make Skip-Gram training computationally practical?**
+4. **Can learned embeddings capture semantic similarity and vector relationships?**
+
+---
+
+## Model Architecture
+
+The implementation follows the Skip-Gram approach:
+
+```text
+                  Training Corpus
+                         │
+                         ▼
+                  Text Preprocessing
+                         │
+                         ▼
+                    Tokenization
+                         │
+                         ▼
+                 Vocabulary Mapping
+                         │
+                         ▼
+               Context Window Creation
+                         │
+                         ▼
+                ┌───────────────────┐
+                │   Target Word     │
+                │   "economy"       │
+                └─────────┬─────────┘
+                          │
+                          ▼
+                 Input Word Embedding
+                          │
+                          ▼
+                 ┌─────────────────┐
+                 │ Negative        │
+                 │ Sampling        │
+                 └────────┬────────┘
+                          │
+                          ▼
+                 Context Prediction
+                          │
+                          ▼
+                   Learned Embedding
+                          │
+              ┌───────────┼───────────┐
+              ▼           ▼           ▼
+         Similarity    Analogies   Visualization
